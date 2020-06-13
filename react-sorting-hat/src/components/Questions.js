@@ -78,6 +78,110 @@ const Questions = (props) => {
     }
 
     return (
-        
-    )
+        <form onSubmit={e => e.preventDefault()}
+>
+    <h2>Which trait do you think best describes you?</h2>
+    <div className='questionCard'>
+        {traits.map(trait => {
+            return (
+                <label key={trait}>
+                    <div>{trait}</div>
+                    <input
+                        type='radio'
+                        name='traits'
+                        value={trait}
+                        onChange={onInputChange}
+                        requiredcontrol={<radio required={true} />}
+                        />
+                </label>
+            )
+        })}
+    </div>
+
+    <h2>Pick another trait that you think describes you:</h2>
+    <div className='questionCard'>
+        {moreTraits.map(moreTrait => {
+            return (
+                <label key ={moreTrait}>
+                    <div>{moreTrait}</div>
+                    <input
+                        type='radio'
+                        name='moreTraits'
+                        value={moreTrait}
+                        onChange={onInputChange}
+                        />
+                </label>
+            )
+        })}
+    </div>
+
+    <h2>Which animal would you keep as a pet?</h2>
+    <div className='questionCard'>
+        {animals.map(animal => {
+            return (
+                <label key={animal}>
+                    <div>{animal}</div>
+                    <input
+                        type='radio'
+                        name='animals'
+                        value={animal}
+                        onChange={onInputChange}
+                        />
+                </label>
+            )
+        })}
+    </div>
+
+    <h2>Which color do you prefer?</h2>
+    <div className='questionCard'>
+        {colors.map(color => {
+            return (
+                <label key={color}>
+                    <div>{color}</div>
+                    <input
+                        type='radio'
+                        name='colors'
+                        value={color}
+                        onChange={onInputChange}
+                        />
+                </label>
+            )
+        })}
+    </div>
+    <h2>Which element are you drawn to?</h2>
+    <div className='questionCard'>
+        {elements.map(element => {
+            return (
+                <label key={element}>
+                    <div>{element}</div>
+                    <input
+                        type='radio'
+                        name='elements'
+                        value={element}
+                        onChange={onInputChange}
+                        />
+                </label>
+            )
+        })}
+    </div>
+    
+    <h2>Which ghost would you most like to meet?</h2>
+    <div className='questionCard'>
+        {ghosts.map(ghost => {
+            return (
+                <label key={ghost}>
+                    <div>{ghost}</div>
+                    <input
+                        type='radio'
+                        name='ghosts'
+                        value={ghost}
+                        onChange={onInputChange}
+                        />
+                </label>
+            )
+        })}
+    </div>
+</form>    )
 }
+
+export default Questions;
