@@ -1,4 +1,5 @@
-import React from 'react'
+import React from 'react';
+import {Link} from 'react-router-dom';
 
 const traits = [
     'brave',
@@ -45,7 +46,7 @@ const ghosts = [
 const Questions = (props) => {
     const { values, onInputChange, disabled } = props
 
-    const count = () => {
+    const countPoints = () => {
         const valuesArr = [values.traits, values.moreTraits, values.animals, values.colors, values.elements, values.ghosts]
         const gryff = ['brave', 'chivalrous', 'lion', 'gold', 'fire', 'Nearly Headless Nick']
         const huffle = ['dedicated', 'patient', 'badger', 'black', 'earth', 'Fat Friar']
@@ -56,15 +57,15 @@ const Questions = (props) => {
             return gryff.includes(value)
         }).length
 
-        const hufflePoints = valuesArr.fileter(value => {
+        const hufflePoints = valuesArr.filter(value => {
             return huffle.includes(value)
         }).length
 
-        const ravenPoints = valuesArr.fileter(value => {
+        const ravenPoints = valuesArr.filter(value => {
             return raven.includes(value)
         }).length
 
-        const slythPoints = valuesArr.fileter(value => {
+        const slythPoints = valuesArr.filter(value => {
             return slyth.includes(value)
         }).length
 
@@ -73,13 +74,15 @@ const Questions = (props) => {
 
         const whichHouse = path[pointsArr.indexOf(Math.max(...pointsArr))]
 
+        console.log(whichHouse);
+
         return whichHouse;
 
     }
 
     return (
-        <form onSubmit={e => e.preventDefault()}
->
+        <form onSubmit={e => e.preventDefault()}>
+
     <h2>Which trait do you think best describes you?</h2>
     <div className='questionCard'>
         {traits.map(trait => {
@@ -181,6 +184,9 @@ const Questions = (props) => {
             )
         })}
     </div>
+    <Link to={`${countPoints()}`}>
+        <button disabled={disabled}>Submit</button>
+    </Link>
 </form>    )
 }
 
